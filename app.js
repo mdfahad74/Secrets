@@ -55,7 +55,7 @@ User.findById(id, function(err, user) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/secrets",
+    callbackURL: "https://vast-crag-05462.herokuapp.com/auth/google/secrets",
     passReqToCallback   : true,
     userProfileURL: "https://www.googleapis.com/oauth2/v2/userinfo"
   },
@@ -78,7 +78,6 @@ app.get('/auth/google',
 app.get("/auth/google/secrets", 
   passport.authenticate("google", { failureRedirect: "/login" }),
   function(req, res) {
-    // Successful authentication, redirect home.
     res.redirect("/secrets");
   });
 
